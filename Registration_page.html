@@ -1,0 +1,197 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration Page</title>
+
+        <!-- <link rel="stylesheet" href="styles.css"> -->
+         <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 50px 64px;
+                margin: 0;
+            }
+
+            h1 {
+                font-size: 28px;
+                margin-bottom: 10px;
+            }
+
+            h4 {
+                color: #888;
+                font-weight: normal;
+                margin-bottom: 40px;
+            }
+
+
+            /* Arrange the form fields into columns */
+            .form-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+
+
+            /* Each label should appear above its input */
+            .form-group {
+                display: flex;
+                flex-direction: column;
+            }
+
+
+            /* Label styling */
+            .form-group label {
+                font-size: 14px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+
+            /* Input box styling */
+            .form-group input {
+                height: 45px;
+                padding: 0 12px;
+                border: none;
+                border-radius: 5px;
+                background-color: #f4f4f4;
+                font-size: 14px;
+                box-sizing: border-box;
+            }
+
+
+            /* Button container */
+            .buttons {
+                display: flex;
+                justify-content: flex-end;
+                gap: 15px;
+                margin-top: 40px;
+            }
+
+
+            /* All buttons */
+            .buttons button {
+                height: 45px;
+                padding: 0 25px;
+                border-radius: 6px;
+                font-size: 14px;
+                cursor: pointer;
+            }
+
+
+            /* Back button */
+            .buttons button:first-child {
+                background-color: white;
+                border: 1px solid #888;
+            }
+
+
+            /* Next button */
+            .buttons button:last-child {
+                background-color: #20265f;
+                color: white;
+                border: none;
+            }
+         </style>
+    </head>
+    <body>
+        <h1>Welcome to Resume Builder</h1>
+        <h4>Lets begin with getting your basic details</h4>
+        <div class="form-container">
+            <div class="form-group">
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" name="firstname" placeholder="Enter your first name here">
+            </div>
+
+            <div class="form-group">
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname" placeholder="Enter your last name here">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email: </label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label for="contactnumber">Contact Number:</label>
+                <input type="number" id="contactnumber" name="contactnumber" placeholder="Enter your last name here">
+            </div>
+
+            <div class="form-group">
+                <label for="linkedInurl">LinkedIn URL</label>
+                <input type="text" id="linkedInurl" name="linkedInurl" placeholder="ENter your linkedin URL">
+            </div>
+
+            <div class="form-group">
+                <label for="githuburl">Github URL</label>
+                <input type="text" id="githuburl" name="githuburl" placeholder="ENter your Github URL">
+            </div>
+
+            <div class="form-group">
+                <label for="codingProfileurl">Coding Profile URL</label>
+                <input type="text" id="codingProfileurl" name="codingProfileurl" placeholder="ENter your Coding Profile URL">
+            </div>
+        </div>
+        <div class="buttons">
+            <button type="button" id="backButton">Back</button>
+            <button type="button" id="nextButton">Next</button>
+        </div>
+
+        <script>
+            let nextButton = document.getElementById("nextButton")
+            let backButton = document.getElementById("backButton")
+
+            nextButton.addEventListener("click", function() {
+                let firstname = document.getElementById("firstname").value.trim();
+                let lastname = document.getElementById("lastname").value.trim();
+                let email = document.getElementById("email").value.trim();
+                let contactNumber = document.getElementById("contactnumber").value.trim();
+                let linkedin = document.getElementById("linkedInurl").value.trim();
+                let github = document.getElementById("githuburl").value.trim();
+                let codingProfile = document.getElementById("codingProfileurl").value.trim();
+            if(firstname === ""){
+                alert("Please enetr your first name");
+                return;
+            }
+            if(lastname === ""){
+                alert("Please enetr your last name");
+                return;
+            }
+            if(!email.endsWith(".com")){
+                alert("Please enter a valid email ending with .com")
+                return;
+            }
+            if(contactNumber.startsWith("+91")){
+                if(contactNumber.length != 13){
+                    alert("Indians numbers that starts with +91 msut be of length 13");
+                    return;
+                }
+            } else{
+                if(contactNumber.length != 10){
+                    alert("Contact numbers must contains 10 digits");
+                    return;
+                }
+            }
+            if(!linkedin.includes("linkedin.com")){
+                alert("Enter valid LinkedIn URL")
+                return;
+            }
+            if(!github.includes("github.com")){
+                alert("Enter valid Github URL")
+                return;
+            }
+            if(!codingProfile.includes("codingProfile.com")){
+                alert("Enter valid codingProfile URL")
+                return;
+            }
+
+            alert("All details are valid");
+        });
+
+        backButton.addEventListener("click", function(){
+            alert("Going back ...");
+        });
+        </script>
+    </body>
+    </html>
